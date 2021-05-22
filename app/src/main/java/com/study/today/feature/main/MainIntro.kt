@@ -1,4 +1,4 @@
-package com.study.today.Main
+package com.study.today.feature.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.study.today.Main.Fragment
+package com.study.today.feature.main.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
