@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.main_fragment)
         setupActionBarWithNavController(navController)
         setupSmoothBottomMenu()
+
     }
 
 
@@ -65,8 +66,10 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
-        /*     if (savedInstanceState == null) {
+/*
+             if (savedInstanceState == null) {
                  supportFragmentManager.beginTransaction()
                      .replace(R.id.container, TourFragment.newInstance())
                      .commitNow()
-             }*/
+             }
+ */

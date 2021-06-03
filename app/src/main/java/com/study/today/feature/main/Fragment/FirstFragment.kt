@@ -1,18 +1,45 @@
 package com.study.today.feature.main.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.study.today.R
+import com.study.today.databinding.FragmentFirstBinding
+import com.study.today.databinding.FragmentFiveBinding
+import com.study.today.feature.main.cos.AreaList
+import com.study.today.feature.main.cos.Drive
 
 class FirstFragment : Fragment() {
+
+    private var _binding: FragmentFirstBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        ): View? {
+        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+
+        binding.drive.setOnClickListener {
+            val intent = Intent(context, Drive::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
+        binding.travel.setOnClickListener {
+            val intent = Intent(context, AreaList::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
