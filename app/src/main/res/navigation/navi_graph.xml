@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/second_fragment" />
+        <action
+            android:id="@+id/action_first_fragment_to_tourFragment"
+            app:destination="@id/tourFragment" />
     </fragment>
 
     <fragment
@@ -51,5 +54,10 @@
         android:label="profile2"
         tools:layout="@layout/fragment_five">
     </fragment>
+    <fragment
+        android:id="@+id/tourFragment"
+        android:name="com.study.today.feature.tour_test.TourFragment"
+        android:label="TourFragment"
+        tools:layout="@layout/tour_fragment" />
 
 </navigation>

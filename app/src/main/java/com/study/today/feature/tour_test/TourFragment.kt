@@ -58,7 +58,7 @@ class TourFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TourViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(TourViewModel::class.java)
         viewModel.searchResult.observe(viewLifecycleOwner, { listAdapter.submitList(it) })
 //        viewModel.resultText.observe(viewLifecycleOwner, { binding.result.text = it })
         viewModel.isLoading.observe(viewLifecycleOwner, { binding.progress.isVisible = it })

@@ -14,7 +14,7 @@
         android:title="@string/menu_leaderboard" />
 
     <item
-        android:id="@+id/third_fragment"
+        android:id="@+id/tourFragment"
         android:contentDescription="@string/menu_store"
         android:icon="@drawable/search_option_array"
         android:title="@string/menu_store" />
