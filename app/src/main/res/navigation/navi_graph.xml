@@ -42,11 +42,11 @@
         tools:layout="@layout/fragment_fourth" >
         <action
             android:id="@+id/action_fourth_fragment_to_fiveFragment"
-            app:destination="@id/fiveFragment" />
+            app:destination="@id/five_fragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/fiveFragment"
+        android:id="@+id/five_fragment"
         android:name="com.study.today.feature.main.Fragment.FiveFragment"
         android:label="profile2"
         tools:layout="@layout/fragment_five">

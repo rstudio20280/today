@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+
 }
 
 
@@ -17,6 +18,11 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //kakao map
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a'
+        }
     }
     dataBinding {
         enabled = true
@@ -63,5 +69,13 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
     // 64k
+
+    //kakao map
+    compile files('libs/libDaumMapAndroid.jar')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/libDaumMapAndroid.jar')
+
+    def activity_version = "1.1.0"
+    implementation "androidx.activity:activity-ktx:$activity_version"
 
 }

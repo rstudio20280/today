@@ -11,4 +11,7 @@
     <string name="another_item_1">Another Item 1</string>
     <string name="another_item_2">Another Item 2</string>
     <string name="another_item_3">Another Item 3</string>
+
+    <string name="BASE_URL">https://dapi.kakao.com/</string>
+    <string name="API_KEY">KakaoAK e28c4f4af1116c02917bf3d6193a93b8</string>
 </resources>

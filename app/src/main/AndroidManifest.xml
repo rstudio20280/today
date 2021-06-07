@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:targetApi="n">
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="7adf7908c73386a026e959eae87a94a3"/>
+
         <activity android:name=".feature.main.cos.AreaList"/>
         <activity android:name=".feature.main.cos.Drive" />
         <activity android:name=".feature.main.MainIntro">
@@ -25,6 +32,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".feature.main.MainActivity" />
+
+
     </application>
 
 </manifest>
