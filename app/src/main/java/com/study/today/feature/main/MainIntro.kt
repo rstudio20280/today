@@ -15,7 +15,7 @@ class MainIntro : AppCompatActivity() {
         setContentView(R.layout.activity_main_intro)
 
         GlobalScope.launch(Dispatchers.Default) {
-            delay(3000)
+            delay(2000)
             startMain()
         }
     }
