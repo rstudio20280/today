@@ -1,19 +1,28 @@
 package com.study.today.feature.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.SystemClock
+import androidx.appcompat.app.AppCompatActivity
 import com.study.today.R
-import com.study.today.feature.main.cos.Drive
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainIntro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_intro)
 
-        SystemClock.sleep(3000)
+        GlobalScope.launch(Dispatchers.Default) {
+            delay(3000)
+            startMain()
+        }
+    }
+
+    //태그 테스트
+
+    private fun startMain() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
