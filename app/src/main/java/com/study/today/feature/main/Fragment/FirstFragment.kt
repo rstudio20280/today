@@ -26,14 +26,10 @@ class FirstFragment : Fragment() {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
 
         binding.drive.setOnClickListener {
-            val intent = Intent(context, Drive::class.java)
-            startActivity(intent)
-//            activity?.finish()
+
         }
         binding.travel.setOnClickListener {
-            val intent = Intent(context, AreaList::class.java)
-            startActivity(intent)
-//            activity?.finish()
+
         }
         return binding.root
     }
