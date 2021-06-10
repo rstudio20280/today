@@ -13,7 +13,7 @@ class MainIntro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_intro)
-
+        //새로운 주석!
         GlobalScope.launch(Dispatchers.Default) {
             delay(2000)
             startMain()
