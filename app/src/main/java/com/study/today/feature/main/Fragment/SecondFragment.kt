@@ -28,7 +28,7 @@ import net.daum.mf.map.api.MapView
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-
+//주석추가!
 //위치권한
 val PERMISSIONS_REQUEST_CODE = 100
 var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
