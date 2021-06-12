@@ -1,4 +1,4 @@
-package com.study.today.feature.tour_test
+package com.study.today.feature.main.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

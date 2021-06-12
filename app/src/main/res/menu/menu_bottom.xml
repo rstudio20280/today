@@ -3,32 +3,27 @@
 
     <item
         android:id="@+id/first_fragment"
-        android:contentDescription="@string/menu_dashboard"
+        android:contentDescription="@string/menu_recommend"
         android:icon="@drawable/ic_home_white_24dp"
-        android:title="@string/menu_dashboard" />
+        android:title="@string/menu_recommend" />
 
     <item
         android:id="@+id/second_fragment"
-        android:contentDescription="@string/menu_leaderboard"
+        android:contentDescription="@string/menu_map"
         android:icon="@drawable/ic_baseline_location_on_24"
-        android:title="@string/menu_leaderboard" />
+        android:title="@string/menu_map" />
 
     <item
         android:id="@+id/tourFragment"
-        android:contentDescription="@string/menu_store"
+        android:contentDescription="@string/menu_search"
         android:icon="@drawable/search_option_array"
-        android:title="@string/menu_store" />
+        android:title="@string/menu_search" />
 
     <item
         android:id="@+id/fourth_fragment"
-        android:contentDescription="@string/menu_profile"
+        android:contentDescription="@string/menu_bookmark"
         android:icon="@drawable/ic_baseline_star_border_24"
-        android:title="@string/menu_profile" />
+        android:title="@string/menu_bookmark" />
 
-    <item
-        android:id="@+id/five_fragment"
-        android:contentDescription="@string/menu_profile2"
-        android:icon="@drawable/ic_home_white_24dp"
-        android:title="@string/menu_profile2" />
 
 </menu>

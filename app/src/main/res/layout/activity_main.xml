@@ -6,7 +6,7 @@
     tools:context=".feature.main.MainActivity">
 
     <fragment
-        android:id="@+id/main_fragment"
+        android:id="@+id/recommend_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:name="androidx.navigation.fragment.NavHostFragment"

@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">today</string>
 
-    <string name="menu_dashboard">추천</string>
-    <string name="menu_leaderboard">지도</string>
-    <string name="menu_store">검색</string>
-    <string name="menu_profile">즐겨찾기</string>
-    <string name="menu_profile2">정보</string>
+    <string name="menu_recommend">추천</string>
+    <string name="menu_map">지도</string>
+    <string name="menu_search">검색</string>
+    <string name="menu_bookmark">즐겨찾기</string>
 
     <string name="hello_blank_fragment">hello_blank_fragment</string>
     <string name="another_item_1">Another Item 1</string>

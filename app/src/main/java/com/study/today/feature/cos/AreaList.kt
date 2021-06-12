@@ -1,4 +1,4 @@
-package com.study.today.feature.main.cos
+package com.study.today.feature.cos
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
