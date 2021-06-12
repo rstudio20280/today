@@ -1,30 +1,26 @@
-package com.study.today.feature.main.Fragment
+package com.study.today.feature.main.recommend
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import com.study.today.R
-import com.study.today.databinding.FragmentFirstBinding
-import com.study.today.databinding.FragmentFiveBinding
-import com.study.today.feature.main.cos.AreaList
-import com.study.today.feature.main.cos.Drive
+import androidx.fragment.app.Fragment
+import com.study.today.databinding.FragmentRecommendBinding
+import com.study.today.feature.cos.AreaList
+import com.study.today.feature.cos.Drive
 
-class FirstFragment : Fragment() {
+class RecommendFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentRecommendBinding? = null
     private val binding get() = _binding!!
-    //1@#!@#!@#~
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
         ): View? {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentRecommendBinding.inflate(inflater, container, false)
 
         binding.drive.setOnClickListener {
             val intent = Intent(context, Drive::class.java)

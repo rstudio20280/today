@@ -7,57 +7,36 @@
 
     <fragment
         android:id="@+id/first_fragment"
-        android:name="com.study.today.feature.main.Fragment.FirstFragment"
-        android:label="Dashboard"
-        tools:layout="@layout/fragment_first" >
+        android:name="com.study.today.feature.main.recommend.RecommendFragment"
+        android:label="@string/menu_recommend"
+        tools:layout="@layout/fragment_recommend" >
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/second_fragment" />
         <action
             android:id="@+id/action_first_fragment_to_tourFragment"
             app:destination="@id/tourFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/second_fragment"
-        android:name="com.study.today.feature.main.Fragment.SecondFragment"
-        android:label="Leaderboard"
-        tools:layout="@layout/fragment_second" >
         <action
-            android:id="@+id/action_secondFragment_to_thirdFragment"
-            app:destination="@id/third_fragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/third_fragment"
-        android:name="com.study.today.feature.main.Fragment.ThirdFragment"
-        android:label="Store"
-        tools:layout="@layout/fragment_third" >
-        <action
-            android:id="@+id/action_thirdFragment_to_fourthFragment"
+            android:id="@+id/action_first_fragment_to_fourth_fragment"
             app:destination="@id/fourth_fragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/fourth_fragment"
-        android:name="com.study.today.feature.main.Fragment.FourthFragment"
-        android:label="Profile"
-        tools:layout="@layout/fragment_fourth" >
-        <action
-            android:id="@+id/action_fourth_fragment_to_fiveFragment"
-            app:destination="@id/five_fragment" />
-    </fragment>
+        android:id="@+id/second_fragment"
+        android:name="com.study.today.feature.main.tour_map.TourMapFragment"
+        android:label="@string/menu_map"
+        tools:layout="@layout/fragment_tour_map" />
 
     <fragment
-        android:id="@+id/five_fragment"
-        android:name="com.study.today.feature.main.Fragment.FiveFragment"
-        android:label="profile2"
-        tools:layout="@layout/fragment_five">
-    </fragment>
+        android:id="@+id/fourth_fragment"
+        android:name="com.study.today.feature.main.bookmark.BookmarkFragment"
+        android:label="@string/menu_bookmark"
+        tools:layout="@layout/fragment_bookmark" />
+
     <fragment
         android:id="@+id/tourFragment"
-        android:name="com.study.today.feature.tour_test.TourFragment"
-        android:label="TourFragment"
-        tools:layout="@layout/tour_fragment" />
+        android:name="com.study.today.feature.main.search.SearchFragment"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_search" />
 
 </navigation>

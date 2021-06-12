@@ -1,4 +1,4 @@
-package com.study.today.feature.tour_test
+package com.study.today.feature.main.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,16 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
-import com.study.today.databinding.TourFragmentBinding
+import com.study.today.databinding.FragmentSearchBinding
 
-class TourFragment : Fragment() {
+class SearchFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = TourFragment()
-    }
-
-    private lateinit var viewModel: TourViewModel
-    private var _binding: TourFragmentBinding? =
+    private lateinit var viewModel: SearchViewModel
+    private var _binding: FragmentSearchBinding? =
         null // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
     private val listAdapter = TourListAdapter()
@@ -29,7 +25,7 @@ class TourFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = TourFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -58,7 +54,7 @@ class TourFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(TourViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(SearchViewModel::class.java)
         viewModel.searchResult.observe(viewLifecycleOwner, { listAdapter.submitList(it) })
 //        viewModel.resultText.observe(viewLifecycleOwner, { binding.result.text = it })
         viewModel.isLoading.observe(viewLifecycleOwner, { binding.progress.isVisible = it })

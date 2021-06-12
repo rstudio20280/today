@@ -22,9 +22,9 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="7adf7908c73386a026e959eae87a94a3"/>
 
-        <activity android:name=".feature.main.cos.AreaList"/>
-        <activity android:name=".feature.main.cos.Drive" />
-        <activity android:name=".feature.main.MainIntro">
+        <activity android:name="com.study.today.feature.cos.AreaList"/>
+        <activity android:name="com.study.today.feature.cos.Drive" />
+        <activity android:name=".feature.intro.MainIntro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
