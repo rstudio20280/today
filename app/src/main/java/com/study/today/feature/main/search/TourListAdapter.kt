@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.study.today.databinding.ItemTourBinding
 import com.study.today.model.Tour
 
@@ -48,6 +49,12 @@ class TourListAdapter(
         fun onBind(model: Tour) {
             binding.tour = model
             binding.position = "${adapterPosition + 1} "
+            Glide.with(binding.root.context)
+                .load(model.firstimage2)
+//                .placeholder(R.drawable.ic_waiting)
+                .optionalCircleCrop()
+
+                .into(binding.imageView)
         }
 
     }

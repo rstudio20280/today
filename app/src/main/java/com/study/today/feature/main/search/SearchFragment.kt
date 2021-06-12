@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -49,6 +51,11 @@ class SearchFragment : Fragment() {
 
             }
         })
+        binding.word.setOnEditorActionListener { text, actionId, keyEvent ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH)
+                viewModel.search(text.toString())
+            false
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -58,6 +65,13 @@ class SearchFragment : Fragment() {
         viewModel.searchResult.observe(viewLifecycleOwner, { listAdapter.submitList(it) })
 //        viewModel.resultText.observe(viewLifecycleOwner, { binding.result.text = it })
         viewModel.isLoading.observe(viewLifecycleOwner, { binding.progress.isVisible = it })
+        viewModel.toastMsgResId.observe(viewLifecycleOwner, {
+            Toast.makeText(
+                requireContext(),
+                getString(it),
+                Toast.LENGTH_SHORT
+            ).show()
+        })
     }
 
     override fun onDestroyView() {

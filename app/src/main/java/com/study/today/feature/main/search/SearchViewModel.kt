@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import com.study.today.R
 import com.study.today.model.Tour
 import com.study.today.model.TourResponse
 import com.study.today.model.remote.ServiceGenerator
@@ -19,6 +20,7 @@ class SearchViewModel : ViewModel() {
     val searchResult = MutableLiveData<List<Tour>>()
     val isLoading = MutableLiveData(false)
     var currentResult: TourResponse? = null
+    val toastMsgResId = MutableLiveData<Int>()
     private val gson = Gson()
 
     fun search(word: String? = null, lat: Double? = null, lng: Double? = null) {
@@ -38,9 +40,13 @@ class SearchViewModel : ViewModel() {
             }
             .subscribe { tours, e ->
                 if (e != null) {
+                    toastMsgResId.postValue(R.string.error_load_tour)
+                    Timber.e("관광정보 로딩 실패!")
                     Timber.e(e)
                 } else {
-                    searchResult.postValue(tours)
+                    if (tours.isEmpty()) {
+                        toastMsgResId.postValue(R.string.msg_no_result)
+                    } else searchResult.postValue(tours)
                     Timber.i(tours.toString())
                 }
                 isLoading.postValue(false)
@@ -80,9 +86,18 @@ class SearchViewModel : ViewModel() {
 
     private fun convert(jsonObject: JsonObject): Pair<TourResponse, List<Tour>> {
         val body = jsonObject.get("response").asJsonObject.get("body")
-        val items = body.asJsonObject.get("items").asJsonObject.get("item")
         val tourResponse = gson.fromJson(body, TourResponse::class.java)
-        val tours = gson.fromJson<List<Tour>>(items, object : TypeToken<List<Tour>>() {}.type)
+        val tours: List<Tour>
+        if (tourResponse.totalCount > 0) {
+            val items = body.asJsonObject.get("items").asJsonObject.get("item")
+            if (tourResponse.totalCount == 1) {
+                tours = listOf(gson.fromJson(items, object : TypeToken<Tour>() {}.type))
+            } else {
+                tours = gson.fromJson(items, object : TypeToken<List<Tour>>() {}.type)
+            }
+        } else {
+            tours = emptyList()
+        }
         return Pair(tourResponse, tours)
     }
 
