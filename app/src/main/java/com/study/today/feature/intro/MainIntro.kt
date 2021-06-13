@@ -1,9 +1,10 @@
-package com.study.today.feature.main
+package com.study.today.feature.intro
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.study.today.R
+import com.study.today.feature.main.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

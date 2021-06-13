@@ -1,4 +1,4 @@
-package com.study.today.feature.main.Fragment
+package com.study.today.feature.main.tour_map
 
 import android.Manifest
 import android.content.Context
@@ -20,7 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.study.today.R
-import com.study.today.databinding.FragmentSecondBinding
+import com.study.today.databinding.FragmentTourMapBinding
 import com.study.today.feature.main.MainActivity
 import com.study.today.utils.RunWithPermission
 import net.daum.mf.map.api.MapPoint
@@ -33,9 +33,9 @@ import java.security.NoSuchAlgorithmException
 val PERMISSIONS_REQUEST_CODE = 100
 var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
 
-class SecondFragment : Fragment() {
+class TourMapFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentTourMapBinding? = null
     private val binding get() = _binding!!
     private var keyword = ""
 
@@ -46,7 +46,7 @@ class SecondFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentTourMapBinding.inflate(inflater, container, false)
         getAppKeyHash()
 
         val BASE_URL = getString(R.string.BASE_URL)

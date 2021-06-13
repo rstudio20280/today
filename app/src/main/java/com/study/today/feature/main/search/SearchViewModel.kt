@@ -1,4 +1,4 @@
-package com.study.today.feature.tour_test
+package com.study.today.feature.main.search
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +13,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class TourViewModel : ViewModel() {
+class SearchViewModel : ViewModel() {
 
     var disposable: Disposable? = null
     val searchResult = MutableLiveData<List<Tour>>()
