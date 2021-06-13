@@ -24,8 +24,6 @@ class SelectSec : AppCompatActivity() {
         val adapter = MyAdapter()
         adapter.listData = data
         binding.recyclerView.adapter = adapter
-
-
         setContentView(view)
     }
 }
