@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.study.today.databinding.ItemRecyclerBinding
 
-class MyAdapter(val listener : ((Map) -> Unit)? = null) : RecyclerView.Adapter<MyAdapter.Holder>(){
+class MyAdapter(val listener : ((MapName) -> Unit)? = null) : RecyclerView.Adapter<MyAdapter.Holder>(){
 
-    var listData = mutableListOf<Map>()
+    var listData = mutableListOf<MapName>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(binding)
@@ -21,7 +21,7 @@ class MyAdapter(val listener : ((Map) -> Unit)? = null) : RecyclerView.Adapter<M
     }
 
     inner class Holder(val binding: ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root){
-        fun setData(member: Map){
+        fun setData(member: MapName){
             binding.textView.text = member.name
             binding.root.setOnClickListener {
                 listener?.invoke(member)

@@ -6,16 +6,16 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.today.databinding.ActivityAreaListBinding
 import com.study.today.feature.cos.areas.Area
-import com.study.today.feature.cos.areas.Map
+import com.study.today.feature.cos.areas.MapName
 import com.study.today.feature.cos.areas.MyAdapter
 import com.study.today.feature.cos.areas.SelectSec
 
-class AreaList : AppCompatActivity() {
+class AreaListActivity : AppCompatActivity() {
     // ViewBinding
     private lateinit var binding: ActivityAreaListBinding
 
     // RecyclerView 가 불러올 목록
-    private val data: MutableList<Map> = mutableListOf()
+    private val data: MutableList<MapName> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class AreaList : AppCompatActivity() {
 
     private fun initialize() {
         Area.cat1.forEach {
-            data.add(Map(it))
+            data.add(MapName(it))
         }
     }
 
@@ -44,9 +44,5 @@ class AreaList : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
     }
-}
-
-private fun Intent.putExtra(s: String, member: Map) {
-    TODO("Not yet implemented")
 }
 

@@ -8,17 +8,17 @@ class SelectSec : AppCompatActivity() {
     // ViewBinding
     private lateinit var binding : ActivitySelectSecBinding
     // RecyclerView 가 불러올 목록
-    private val data:MutableList<Map> = mutableListOf()
+    private val data:MutableList<MapName> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySelectSecBinding.inflate(layoutInflater)
         val view = binding.root
-        val member = intent.getSerializableExtra("name") as Map
+        val member = intent.getSerializableExtra("name") as MapName
 
 
         Area.cat2[member.name]?.forEach {
-            data.add(Map(it))
+            data.add(MapName(it))
         }
 
         val adapter = MyAdapter()

@@ -17,14 +17,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="n" >
-        <activity android:name=".feature.cos.areas.Tourselects" >
+        <activity android:name=".feature.cos.areas.SelectSec" >
         </activity>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="7adf7908c73386a026e959eae87a94a3" />
 
-        <activity android:name=".feature.cos.AreaList" />
+        <activity android:name=".feature.cos.AreaListActivity" />
         <activity android:name=".feature.cos.Drive" />
         <activity android:name=".feature.intro.MainIntro" >
             <intent-filter>
