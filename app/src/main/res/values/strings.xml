@@ -13,4 +13,6 @@
 
     <string name="BASE_URL">https://dapi.kakao.com/</string>
     <string name="API_KEY">KakaoAK e28c4f4af1116c02917bf3d6193a93b8</string>
+    <string name="error_load_tour">관광정보 로딩 실패!</string>
+    <string name="msg_no_result">검색 결과가 없습니다.</string>
 </resources>
