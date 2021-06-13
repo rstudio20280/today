@@ -6,32 +6,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryBackground">
 
-
-        <EditText
-            android:id="@+id/word"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="서울"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="48dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/search"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="검색"
-            app:layout_constraintBottom_toBottomOf="@+id/word"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/word" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_tour" />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -43,17 +32,42 @@
             app:layout_constraintStart_toStartOf="@+id/recyclerView"
             app:layout_constraintTop_toTopOf="@+id/recyclerView" />
 
+        <EditText
+            android:id="@+id/word"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_round_corner_border"
+            android:elevation="2dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:padding="6dp"
+            android:text="서울"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/search"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/word"
+        <FrameLayout
+            android:id="@+id/search"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_circle_border_white_back"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/word"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_tour" />
+            app:layout_constraintTop_toTopOf="@+id/word">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="4dp"
+                android:src="@drawable/ic_search_24"
+                app:tint="@color/colorPrimary" />
+        </FrameLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
