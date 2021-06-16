@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="colorPrimaryBackground">#1A6200EE</color>
+
     <color name="colorTextPrimary">#ffffff</color>
     <color name="colorTextSecondary">#A3FFFFFF</color>
     <color name="colorBadge">#f4d415</color>
