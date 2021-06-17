@@ -23,11 +23,11 @@ class SearchViewModel : ViewModel() {
     val toastMsgResId = MutableLiveData<Int>()
     private val gson = Gson()
 
-    fun search(word: String? = null, lat: Double? = null, lng: Double? = null) {
+    fun search(word: String? = null, lat: Double? = null, lng: Double? = null, range:Int = 1000) {
         isLoading.value = true
         disposable = ServiceGenerator.createTour().let { api ->
             if (word != null) api.searchWithKeyWord(word)
-            else api.searchWithLatLng(lat!!, lng!!)
+            else api.searchWithLatLng(lat!!, lng!!, radius = range)
         }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -53,8 +53,8 @@ class SearchViewModel : ViewModel() {
             }
     }
 
-    fun search(lat: Double, lng: Double) {
-        search(null, lat, lng)
+    fun search(lat: Double, lng: Double, range:Int = 1000) {
+        search(null, lat, lng, range)
     }
 
     fun searchNext(word: String) {
