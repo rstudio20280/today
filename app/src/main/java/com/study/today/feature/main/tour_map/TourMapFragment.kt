@@ -28,6 +28,7 @@ import com.study.today.feature.main.search.SearchViewModel
 import com.study.today.utils.RunWithPermission
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
+import timber.log.Timber
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -102,9 +103,17 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        viewModel.searchResult.observe(viewLifecycleOwner, { listAdapter.submitList(it) })
-//        viewModel.resultText.observe(viewLifecycleOwner, { binding.result.text = it })
-        //viewModel.isLoading.observe(viewLifecycleOwner, { binding.progress.isVisible = it })
+        viewModel.searchResult.observe(viewLifecycleOwner, {
+            // TODO: 결과로 전달받은 목록 처리
+            Timber.i(it.toString())
+            it.forEach {
+
+            }
+        })
+        viewModel.isLoading.observe(viewLifecycleOwner, {
+            // TODO: 처리중일때 처리
+//            binding.progress.isVisible = it
+        })
         viewModel.toastMsgResId.observe(viewLifecycleOwner, {
             Toast.makeText(
                 requireContext(),
@@ -153,7 +162,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
 
     //주변 관광지 조회
     private fun InScopeSearch(mapView: MapView){
-
+        viewModel.search(mCurrentLat, mCurrentLng, 3000)
     }
 
     //현재 위치
