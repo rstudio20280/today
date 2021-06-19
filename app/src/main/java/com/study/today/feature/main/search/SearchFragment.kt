@@ -1,5 +1,6 @@
 package com.study.today.feature.main.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +36,10 @@ class SearchFragment : Fragment() {
 
         binding.search.setOnClickListener {
             viewModel.search(binding.word.text.toString())
+        }
+        binding.recyclerView.setOnClickListener{
+        //Intent(context, Profile)
+
         }
         binding.search.setOnLongClickListener {
             viewModel.search(37.56762539175941, 126.98092840228584)

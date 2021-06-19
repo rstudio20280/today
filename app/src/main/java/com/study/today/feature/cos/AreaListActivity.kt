@@ -24,8 +24,6 @@ class AreaListActivity : AppCompatActivity() {
         setContentView(view)
         initialize() // data 값 초기화
         refreshRecyclerView() // recyclerView 데이터 바인딩
-
-
     }
 
     private fun initialize() {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.study.today" >
+    package="com.study.today">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,9 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="n" >
-        <activity android:name=".feature.cos.areas.SelectSec" >
-        </activity>
+        tools:targetApi="n">
+        <activity android:name=".feature.cos.areas.AreaInfoActivity" />
+        <activity android:name=".feature.cos.areas.SelectSec" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -27,7 +27,7 @@
 
         <activity android:name=".feature.cos.AreaListActivity" />
         <activity android:name=".feature.cos.Drive" />
-        <activity android:name=".feature.intro.MainIntro" >
+        <activity android:name=".feature.intro.MainIntro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
