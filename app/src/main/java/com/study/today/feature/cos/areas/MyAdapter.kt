@@ -17,11 +17,11 @@ class MyAdapter(val listener : ((MapName) -> Unit)? = null) : RecyclerView.Adapt
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val member = listData[position]
         holder.setData(member)
-        holder.itemView.setOnClickListener{
-            var intent = Intent(holder.binding.root.context, AreaInfoActivity::class.java)
-            intent.putExtra("name",listData[position].name.toString())
-            holder.binding.root.context.startActivity(intent)
-        }
+//        holder.itemView.setOnClickListener{
+//            var intent = Intent(holder.binding.root.context, AreaInfoActivity::class.java)
+//            intent.putExtra("name",listData[position].name.toString())
+//            holder.binding.root.context.startActivity(intent)
+//        }
     }
     override fun getItemCount(): Int {
         return listData.size

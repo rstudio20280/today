@@ -12,6 +12,6 @@ class AreaInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_area_info)
-        binding.areatext.text = intent.getStringExtra("name").toString()
+        binding.areatext.text = (intent.getSerializableExtra("name") as MapName).name
     }
 }
