@@ -38,18 +38,18 @@ class RangeDialogFragment : DialogFragment() {
 
         binding.one.setOnClickListener{
             range=1000
-            bundle.putInt("1km".range)
+            bundle.putInt("1km",range)
             fragmentTour.arguments = bundle
 
 
         }
         binding.two.setOnClickListener{
             range=2000
-            bundle.putInt("2km".range)
+            bundle.putInt("2km",range)
         }
         binding.three.setOnClickListener{
             range=3000
-            bundle.putInt("3km".range)
+            bundle.putInt("3km",range)
         }
 
 
