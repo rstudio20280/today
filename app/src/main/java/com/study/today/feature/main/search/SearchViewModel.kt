@@ -23,7 +23,7 @@ class SearchViewModel : ViewModel() {
     val toastMsgResId = MutableLiveData<Int>()
     private val gson = Gson()
 
-    fun search(word: String? = null, lat: Double? = null, lng: Double? = null, range:Int = 1000) {
+    fun search(word: String? = null, lat: Double? = null, lng: Double? = null, range:Int = 3000) {
         isLoading.value = true
         disposable = ServiceGenerator.createTour().let { api ->
             if (word != null) api.searchWithKeyWord(word)
@@ -53,7 +53,7 @@ class SearchViewModel : ViewModel() {
             }
     }
 
-    fun search(lat: Double, lng: Double, range:Int = 1000) {
+    fun search(lat: Double, lng: Double, range:Int = 3000) {
         search(null, lat, lng, range)
     }
 
