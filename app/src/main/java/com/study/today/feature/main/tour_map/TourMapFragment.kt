@@ -84,11 +84,11 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
                 var y=it.mapy //lng
 
                 val marker = MapPOIItem()
-                val mapPoint = MapPoint.mapPointWithGeoCoord(x, y)
+                val mapPoint = MapPoint.mapPointWithGeoCoord(y, x)
                 mapView.removePOIItem(marker)
                 marker.itemName = it.title
                 marker.mapPoint = mapPoint
-                marker.setMarkerType(MapPOIItem.MarkerType.BluePin)
+                marker.setMarkerType(MapPOIItem.MarkerType.RedPin)
                 mapView.addPOIItem(marker)
                 var aaa = ""
                 aaa = it.title
@@ -96,12 +96,10 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
             }
             val mk = MapPOIItem()
 
-            val testpoint = MapPoint.mapPointWithGeoCoord(mCurrentLat,mCurrentLng)
+            val testpoint = MapPoint.mapPointWithGeoCoord(mCurrentLat, mCurrentLng)
             mk.mapPoint = testpoint
-            mk.setMarkerType(MapPOIItem.MarkerType.BluePin)
+            mk.setMarkerType(MapPOIItem.MarkerType.YellowPin)
             mapView.addPOIItem(mk)
-
-
 
         })
         viewModel.isLoading.observe(viewLifecycleOwner, {

@@ -14,11 +14,11 @@ import android.widget.BaseAdapter
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
 import com.study.today.R
-import com.study.today.databinding.RangeAreaListBinding
+import com.study.today.databinding.FragmentRangeDialogBinding
 
 class RangeDialogFragment : DialogFragment() {
 
-    private var _binding : RangeAreaListBinding?=null
+    private var _binding : FragmentRangeDialogBinding?=null
     private val binding get() = _binding!!
     private var range : Int = 1000 //1km
 
@@ -27,15 +27,14 @@ class RangeDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = RangeAreaListBinding.inflate(inflater,container,false)
+        _binding = FragmentRangeDialogBinding.inflate(inflater,container,false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         var fragmentTour = TourMapFragment()
         var bundle = Bundle()
 
 
-
-
+/*
         binding.one.setOnClickListener{
             range=1000
             bundle.putInt("1km",range)
@@ -51,7 +50,7 @@ class RangeDialogFragment : DialogFragment() {
             range=3000
             bundle.putInt("3km",range)
         }
-
+*/
 
 
         //binding.rangeListview.adapter = createRangeList(requireContext())
