@@ -26,7 +26,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.study.today.R
 import com.study.today.databinding.FragmentTourMapBinding
-import com.study.today.databinding.RangeAreaListBinding
 import com.study.today.feature.main.MainActivity
 import com.study.today.feature.main.search.SearchViewModel
 import com.study.today.utils.RunWithPermission
@@ -38,7 +37,6 @@ import timber.log.Timber
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-//주석추가!
 //위치권한
 val PERMISSIONS_REQUEST_CODE = 100
 var REQUIRED_PERMISSIONS = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -49,7 +47,6 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
 
     private var _binding: FragmentTourMapBinding? = null
     private val binding get() = _binding!!
-    private var keyword = ""
     private var mCurrentLat : Double = 0.0
     private var mCurrentLng : Double = 0.0
     private var range : Int = 1000 //1km
@@ -88,11 +85,14 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
                 mapView.removePOIItem(marker)
                 marker.itemName = it.title
                 marker.mapPoint = mapPoint
-                marker.setMarkerType(MapPOIItem.MarkerType.RedPin)
+                marker.setMarkerType(MapPOIItem.MarkerType.YellowPin)
+                //marker.customImageResourceId = R.drawable.ic_custom_marker_green
+                marker.isCustomImageAutoscale = true
+                marker.setCustomImageAnchor(0.5f,1.5f)
                 mapView.addPOIItem(marker)
-                var aaa = ""
-                aaa = it.title
-                Toast.makeText(context, aaa, Toast.LENGTH_SHORT).show()
+//                var aaa = ""
+//                aaa = it.title
+//                Toast.makeText(context, aaa, Toast.LENGTH_SHORT).show()
             }
             val mk = MapPOIItem()
 
@@ -116,7 +116,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
 
         runWithPermission = RunWithPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
         runWithPermission.setActionWhenGranted {
-            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading) //현재위치에서 트래킹
+            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading) //현재위치에서 트래킹
             mapView.setShowCurrentLocationMarker(true)//현재위치 마커 생성
 
         }.setActionWhenDenied {
@@ -135,7 +135,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
             zoomOut(mapView)
         }
 
-        //현재 위치 확인 함수
+        //현재 위치 버튼
         binding.mapPageLocationBtn.setOnClickListener {
             touchLocation(mapView)
         }
@@ -170,8 +170,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
         mCurrentLng = mapPointGeo.longitude
         //트래킹 모드가 아닌 단순 현재위치 업데이트일 경우, 한번만 위치 업데이트하고 트래킹을 중단시키기 위한 로직
         if (!isTrackingMode) {
-            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOff)
-
+            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading)
         }
     }
     //단말의 방향 각도값 얻기
@@ -216,7 +215,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
             Color.argb(128,255,0,0),Color.argb(0,0,0,0)))
     }
 
-    //현재 위치
+    //현재 위치 버튼
     private fun touchLocation(mapView: MapView) {
         val permissionCheck =
             ContextCompat.checkSelfPermission(
@@ -232,10 +231,8 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener{
                 val uLongitude = userNowLocation?.longitude
                 val uNowPosition = MapPoint.mapPointWithGeoCoord(uLatitude!!, uLongitude!!)
                 mapView.setMapCenterPoint(uNowPosition, true)
-                mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading) //현재위치에서 트래킹
+                mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading) //현재위치에서 트래킹
                 mapView.setShowCurrentLocationMarker(true)//현재위치 마커 생성
-                //val mapPoint = MapPoint
-                //val mapPointGeo: GeoCoordinate = mapPoint.getMapPointGeoCoord()
             } catch (e: NullPointerException) {
                 Log.e("LOCATION_ERROR", e.toString())
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
