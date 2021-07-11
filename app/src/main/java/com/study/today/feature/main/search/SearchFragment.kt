@@ -45,8 +45,8 @@ class SearchFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val lm = binding.recyclerView.layoutManager as LinearLayoutManager
-                if (lm.itemCount <= lm.findLastCompletelyVisibleItemPosition() + 4) {
-                    viewModel.searchNext(binding.word.text.toString())
+                            if (lm.itemCount <= lm.findLastCompletelyVisibleItemPosition() + 4) {
+                                viewModel.searchNext(binding.word.text.toString())
                 }
 
             }
@@ -78,5 +78,4 @@ class SearchFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

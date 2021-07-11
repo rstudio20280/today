@@ -8,15 +8,16 @@
 
 
     <!--지도-->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/mapContainer"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="10dp"
             android:orientation="horizontal">
 
             <Button
@@ -27,33 +28,42 @@
                 tools:ignore="MissingConstraints" />
 
             <Button
+                android:id="@+id/zoomInBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+"
-                android:id="@+id/zoomInBtn"/>
+                android:text="+" />
+
+            <Button
+                android:id="@+id/zoomOutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
-                android:id="@+id/zoomOutBtn"/>
+                android:id="@+id/range"
+
+                android:text="3km"/>
         </LinearLayout>
-    </LinearLayout>
 
-    <!--관광지 조회-->
-    <LinearLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-            <Button
-                android:id="@+id/searchBtn"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_gravity="right"
-                android:text="관광지 조회" />
-    </LinearLayout>
+
+        <!--관광지 조회-->
+        <Button
+            android:id="@+id/searchBtn"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="right"
+            android:layout_margin="8dp"
+            android:text="관광지 조회" />
+
+
+
+
+    </RelativeLayout>
+
 </LinearLayout>
