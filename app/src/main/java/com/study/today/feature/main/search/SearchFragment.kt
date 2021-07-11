@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.study.today.databinding.FragmentSearchBinding
+import com.study.today.feature.main.bookmark.BookmarkRepo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
 
@@ -20,7 +24,16 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? =
         null // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
-    private val listAdapter = TourListAdapter()
+    private val listAdapter = TourListAdapter() { i, tour, b ->
+        // TODO: 테스트용으로 작성한 부분이기때문에 나중에 수정해야함
+        GlobalScope.launch(Dispatchers.IO) {
+            val repo = BookmarkRepo.getInstance(requireActivity().application)
+            if (b) {
+                repo.addBookmark(tour)
+            } else repo.removeBookmark(tour)
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +58,8 @@ class SearchFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val lm = binding.recyclerView.layoutManager as LinearLayoutManager
-                            if (lm.itemCount <= lm.findLastCompletelyVisibleItemPosition() + 4) {
-                                viewModel.searchNext(binding.word.text.toString())
+                if (lm.itemCount <= lm.findLastCompletelyVisibleItemPosition() + 4) {
+                    viewModel.searchNext(binding.word.text.toString())
                 }
 
             }

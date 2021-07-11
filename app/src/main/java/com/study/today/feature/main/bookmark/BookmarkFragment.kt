@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.study.today.databinding.FragmentBookmarkBinding
 import com.study.today.feature.main.search.TourListAdapter
 import com.study.today.model.Tour
@@ -29,7 +30,7 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
-        viewModel.loadBookMarks()
+//        viewModel.loadBookMarks()
         viewModel.bookmarkList.observe(viewLifecycleOwner, { listAdapter.submitList(it) })
         viewModel.isLoading.observe(viewLifecycleOwner, { binding.progress.isVisible = it })
         viewModel.toastMsgResId.observe(viewLifecycleOwner, {

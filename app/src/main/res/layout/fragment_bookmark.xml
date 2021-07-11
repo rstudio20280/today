@@ -46,7 +46,8 @@
             android:padding="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/search"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"/>
 
         <FrameLayout
             android:id="@+id/search"
@@ -57,7 +58,8 @@
             android:elevation="2dp"
             app:layout_constraintBottom_toBottomOf="@+id/word"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/word">
+            app:layout_constraintTop_toTopOf="@+id/word"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="match_parent"
