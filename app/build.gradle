@@ -24,16 +24,8 @@ android {
         }
     }
 
-    packagingOptions {
-        exclude 'META-INF/atomicfu.kotlin_module'
-    }
-
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -95,8 +87,6 @@ dependencies {
     //Room
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
-//    annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
 }
