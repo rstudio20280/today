@@ -6,10 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import com.study.today.model.Tour
 import io.reactivex.disposables.Disposable
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class BookmarkViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -30,11 +26,7 @@ class BookmarkViewModel(application: Application) : AndroidViewModel(application
 //    }
 
     fun change(tour: Tour, isBookmark: Boolean) {
-        GlobalScope.launch(Dispatchers.IO) {
-            Timber.i("${tour.title} -> $isBookmark")
-            if (isBookmark) repo.addBookmark(tour)
-            else repo.removeBookmark(tour)
-        }
+        repo.change(tour, isBookmark)
     }
 
 

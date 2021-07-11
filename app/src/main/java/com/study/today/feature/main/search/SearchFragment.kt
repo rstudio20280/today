@@ -26,13 +26,8 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
     private val listAdapter = TourListAdapter() { i, tour, b ->
         // TODO: 테스트용으로 작성한 부분이기때문에 나중에 수정해야함
-        GlobalScope.launch(Dispatchers.IO) {
-            val repo = BookmarkRepo.getInstance(requireActivity().application)
-            if (b) {
-                repo.addBookmark(tour)
-            } else repo.removeBookmark(tour)
-        }
-
+        val repo = BookmarkRepo.getInstance(requireActivity().application)
+        repo.change(tour, b)
     }
 
     override fun onCreateView(
