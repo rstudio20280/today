@@ -221,7 +221,9 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
     private fun ShowRangeDialog(context: Context) {
         val bundle = Bundle()
         //bundle.putParcelable(EXTRA_NOTICE_SAVE, range)
-        val dialog = RangeDialogFragment()
+        val dialog = RangeDialogFragment {range: Int ->
+            Toast.makeText(requireContext(), "범위는 $range 입니다!", Toast.LENGTH_SHORT).show()
+        }
         dialog.arguments = bundle
         activity?.supportFragmentManager?.let { fragmentManager ->
             dialog.show(fragmentManager, TAG_DIALOG_EVENT)

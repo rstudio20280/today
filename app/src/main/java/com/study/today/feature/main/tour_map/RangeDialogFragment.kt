@@ -1,6 +1,7 @@
 package com.study.today.feature.main.tour_map
 
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.media.session.PlaybackState
@@ -16,7 +17,7 @@ import androidx.lifecycle.ViewModel
 import com.study.today.R
 import com.study.today.databinding.FragmentRangeDialogBinding
 
-class RangeDialogFragment : DialogFragment() {
+class RangeDialogFragment(val rangeListener: (((Int)) -> Unit)? = null) : DialogFragment() {
 
     private var _binding : FragmentRangeDialogBinding?=null
     private val binding get() = _binding!!
@@ -36,8 +37,7 @@ class RangeDialogFragment : DialogFragment() {
         _binding = FragmentRangeDialogBinding.inflate(inflater,container,false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        var fragmentTour = TourMapFragment()
-        var bundle = Bundle()
+
 
 
 /*
@@ -64,45 +64,9 @@ class RangeDialogFragment : DialogFragment() {
         return binding.root
 
     }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        rangeListener?.invoke(binding.seekbar.progress)
+        super.onDismiss(dialog)
+    }
 }
-/*
-    fun getInstance():DialogFragment{
-        return DialogFragment()
-    }
-    override fun onClick(position: View?){
-        dismiss()
-    }
-
-    private class createRangeList(context : Context) : BaseAdapter(){
-        private val mContext : Context
-
-        private val numbers = arrayListOf<Int>(
-            1,2,3,4,5,6,7,8,9,10
-        )
-
-        init{
-            mContext = context
-        }
-
-        override fun getCount(): Int {
-            return numbers.size
-        }
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-        override fun getItem(position: Int): Any {
-            val selectItem = numbers.get(position)
-            return selectItem
-        }
-
-        override fun getView(position: Int, view: View?, viewGroup: ViewGroup?): View {
-            val layoutInflater = LayoutInflater.from(mContext)
-            val rlist = layoutInflater.inflate(R.layout.range_area_list,viewGroup,false)
-
-            return rlist
-        }
-    }
-
-*/
-
-
