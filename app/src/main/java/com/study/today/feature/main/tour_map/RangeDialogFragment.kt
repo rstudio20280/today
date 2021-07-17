@@ -22,6 +22,12 @@ class RangeDialogFragment : DialogFragment() {
     private val binding get() = _binding!!
     private var range : Int = 1000 //1km
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setStyle(STYLE_NORMAL, 0)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
