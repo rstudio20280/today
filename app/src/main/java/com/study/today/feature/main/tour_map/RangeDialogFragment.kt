@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.SeekBar
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
 import com.study.today.R
@@ -38,35 +39,28 @@ class RangeDialogFragment(val rangeListener: (((Int)) -> Unit)? = null) : Dialog
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
 
+        binding.rangeSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                binding.textSeekbar.text = "$progress"
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // TODO: "start"
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // TODO: "stop"
+            }
+        })
 
-
-/*
-        binding.one.setOnClickListener{
-            range=1000
-            bundle.putInt("1km",range)
-            fragmentTour.arguments = bundle
-
-
+        binding.okBtn.setOnClickListener{
+            rangeListener?.invoke(binding.rangeSeekbar.progress)
+            dismiss()
         }
-        binding.two.setOnClickListener{
-            range=2000
-            bundle.putInt("2km",range)
-        }
-        binding.three.setOnClickListener{
-            range=3000
-            bundle.putInt("3km",range)
-        }
-*/
-
-
-        //binding.rangeListview.adapter = createRangeList(requireContext())
 
         return binding.root
 
     }
 
     override fun onDismiss(dialog: DialogInterface) {
-        rangeListener?.invoke(binding.seekbar.progress)
         super.onDismiss(dialog)
     }
 }

@@ -42,9 +42,9 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/range"
+                android:id="@+id/rangeBtn"
 
-                android:text="3km"/>
+                android:text="1 km"/>
         </LinearLayout>
 
 

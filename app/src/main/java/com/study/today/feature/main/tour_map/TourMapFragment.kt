@@ -51,7 +51,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
     private val binding get() = _binding!!
     private var mCurrentLat: Double = 0.0
     private var mCurrentLng: Double = 0.0
-    private var range: Int = 1000 //1km
+    private var searchRange: Int = 1000 //1km
     var isTrackingMode = false
 
     private lateinit var runWithPermission: RunWithPermission
@@ -82,7 +82,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
 
                 Glide.with(requireContext())
                     .asBitmap()
-                    .override(100)
+                    .override(80)
                     .optionalCircleCrop()
                     .load(it.firstimage)
                     .into(object : CustomTarget<Bitmap>() {
@@ -95,7 +95,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
 
                             val marker = MapPOIItem()
                             val mapPoint = MapPoint.mapPointWithGeoCoord(y, x)
-                            mapView.removePOIItem(marker)
+
                             marker.itemName = it.title
                             marker.mapPoint = mapPoint
                             marker.setMarkerType(MapPOIItem.MarkerType.CustomImage)
@@ -158,7 +158,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
         }
 
         //관광지 조회 범위 지정
-        binding.range.setOnClickListener {
+        binding.rangeBtn.setOnClickListener {
             ShowRangeDialog(requireContext())
         }
 
@@ -213,8 +213,9 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
 
     //주변 관광지 조회
     private fun InScopeSearch(mapView: MapView) {
-        DrawCircle(mapView, 3000)
-        viewModel.search(mCurrentLat, mCurrentLng, 3000)
+        mapView.removeAllPOIItems()
+        DrawCircle(mapView, searchRange)
+        viewModel.search(mCurrentLat, mCurrentLng, searchRange)
     }
 
     //관광지 조회 범위 지정
@@ -222,7 +223,8 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
         val bundle = Bundle()
         //bundle.putParcelable(EXTRA_NOTICE_SAVE, range)
         val dialog = RangeDialogFragment {range: Int ->
-            Toast.makeText(requireContext(), "범위는 $range 입니다!", Toast.LENGTH_SHORT).show()
+            searchRange = range*1000
+            binding.rangeBtn.setText("$range km")
         }
         dialog.arguments = bundle
         activity?.supportFragmentManager?.let { fragmentManager ->
@@ -231,7 +233,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
     }
 
     //범위 그리기
-    private fun DrawCircle(mapView: MapView, range: Int = 3000) {
+    private fun DrawCircle(mapView: MapView, range: Int = searchRange) {
         mapView.removeAllCircles()
         mapView.addCircle(
             MapCircle(
