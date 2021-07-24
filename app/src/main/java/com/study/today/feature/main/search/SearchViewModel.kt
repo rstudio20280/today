@@ -1,11 +1,13 @@
 package com.study.today.feature.main.search
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.study.today.R
+import com.study.today.feature.main.bookmark.BookmarkRepo
 import com.study.today.model.Tour
 import com.study.today.model.TourResponse
 import com.study.today.model.remote.ServiceGenerator
@@ -14,8 +16,9 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class SearchViewModel : ViewModel() {
+class SearchViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val bookmarkIdSet = BookmarkRepo.getInstance(application).idSet
     var disposable: Disposable? = null
     val searchResult = MutableLiveData<List<Tour>>()
     val isLoading = MutableLiveData(false)
@@ -23,7 +26,7 @@ class SearchViewModel : ViewModel() {
     val toastMsgResId = MutableLiveData<Int>()
     private val gson = Gson()
 
-    fun search(word: String? = null, lat: Double? = null, lng: Double? = null, range:Int = 3000) {
+    fun search(word: String? = null, lat: Double? = null, lng: Double? = null, range: Int = 3000) {
         isLoading.value = true
         disposable = ServiceGenerator.createTour().let { api ->
             if (word != null) api.searchWithKeyWord(word)
@@ -53,7 +56,7 @@ class SearchViewModel : ViewModel() {
             }
     }
 
-    fun search(lat: Double, lng: Double, range:Int = 3000) {
+    fun search(lat: Double, lng: Double, range: Int = 3000) {
         search(null, lat, lng, range)
     }
 
@@ -97,6 +100,9 @@ class SearchViewModel : ViewModel() {
             }
         } else {
             tours = emptyList()
+        }
+        tours.forEach {
+            it.bookmark = bookmarkIdSet.contains(it.id)
         }
         return Pair(tourResponse, tours)
     }
