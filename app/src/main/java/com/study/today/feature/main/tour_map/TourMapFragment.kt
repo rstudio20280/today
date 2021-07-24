@@ -26,7 +26,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.study.today.R
 import com.study.today.databinding.FragmentTourMapBinding
 import com.study.today.feature.main.MainActivity
 import com.study.today.feature.main.search.SearchViewModel
@@ -65,10 +64,6 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
         _binding = FragmentTourMapBinding.inflate(inflater, container, false)
         //getAppKeyHash()
 
-        val BASE_URL = getString(R.string.BASE_URL)
-        val API_KEY = getString(R.string.API_KEY)
-
-
         val mapView = MapView(activity)
         binding.mapContainer.addView(mapView)
         mapView.setZoomLevel(7, true)
@@ -100,8 +95,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
                             marker.mapPoint = mapPoint
                             marker.setMarkerType(MapPOIItem.MarkerType.CustomImage)
                             marker.customImageBitmap = resource
-                                    //marker.customImageResourceId = R.drawable.ic_custom_marker_green
-                                marker.isCustomImageAutoscale = true
+                            marker.isCustomImageAutoscale = true
                             marker.setCustomImageAnchor(0.5f, 1.5f)
                             mapView.addPOIItem(marker)
                         }
@@ -159,7 +153,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
 
         //관광지 조회 범위 지정
         binding.rangeBtn.setOnClickListener {
-            ShowRangeDialog(requireContext())
+            ShowRangeDialog()
         }
 
         return binding.root
@@ -219,9 +213,8 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
     }
 
     //관광지 조회 범위 지정
-    private fun ShowRangeDialog(context: Context) {
+    private fun ShowRangeDialog() {
         val bundle = Bundle()
-        //bundle.putParcelable(EXTRA_NOTICE_SAVE, range)
         val dialog = RangeDialogFragment {range: Int ->
             searchRange = range*1000
             binding.rangeBtn.setText("$range km")
@@ -283,7 +276,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
         }
     }
 
-
+    //해시키
     private fun getAppKeyHash() {
         try {
             val info: PackageInfo =
