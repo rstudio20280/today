@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context=".feature.main.tour_map.TourMapFragment">
 
-
     <!--지도-->
     <RelativeLayout
         android:id="@+id/mapContainer"
@@ -42,12 +41,9 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/range"
-
-                android:text="3km"/>
+                android:id="@+id/rangeBtn"
+                android:text="1 km"/>
         </LinearLayout>
-
-
 
         <!--관광지 조회-->
         <Button
@@ -60,9 +56,6 @@
             android:layout_gravity="right"
             android:layout_margin="8dp"
             android:text="관광지 조회" />
-
-
-
 
     </RelativeLayout>
 
