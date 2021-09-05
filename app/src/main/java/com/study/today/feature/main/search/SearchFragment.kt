@@ -1,11 +1,14 @@
 package com.study.today.feature.main.search
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -14,14 +17,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.study.today.databinding.FragmentSearchBinding
+import com.study.today.feature.cos.areas.SelectSec
+import com.study.today.model.Tour
+import timber.log.Timber
+import java.util.Calendar.getInstance
 
 class SearchFragment : Fragment() {
 
     private lateinit var viewModel: SearchViewModel
     private var _binding: FragmentSearchBinding? =
-        null // This property is only valid between onCreateView and onDestroyView.
+        null
     private val binding get() = _binding!!
-    private val listAdapter = TourListAdapter()
+
+    private val listAdapter = TourListAdapter(clickListener = object : (Int, Tour) -> Unit {
+        override fun invoke(position: Int, tour: Tour) {
+            Timber.d("Click Data : " + position + tour )
+
+            //val repo = SearchViewFragment.getInstance(requireActivity().application)
+            // repo.change(position, tour)
+        }
+    })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,15 +52,13 @@ class SearchFragment : Fragment() {
         binding.search.setOnClickListener {
             viewModel.search(binding.word.text.toString())
         }
-        binding.recyclerView.setOnClickListener{
-        //Intent(context, Profile)
-
-        }
         binding.search.setOnLongClickListener {
             viewModel.search(37.56762539175941, 126.98092840228584)
             true
         }
+
         binding.recyclerView.adapter = listAdapter
+
         binding.recyclerView.addOnScrollListener(object : OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)

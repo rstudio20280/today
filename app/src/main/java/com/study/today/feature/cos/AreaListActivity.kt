@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.today.databinding.ActivityAreaListBinding
 import com.study.today.feature.cos.areas.Area
 import com.study.today.feature.cos.areas.MapName
-import com.study.today.feature.cos.areas.MyAdapter
+import com.study.today.feature.cos.areas.AreaListAdapter
 import com.study.today.feature.cos.areas.SelectSec
 
 class AreaListActivity : AppCompatActivity() {
@@ -33,7 +33,7 @@ class AreaListActivity : AppCompatActivity() {
     }
 
     private fun refreshRecyclerView() {
-        val adapter = MyAdapter(listener = { member ->
+        val adapter = AreaListAdapter(listener = { member ->
             val intent = Intent(this, SelectSec::class.java)
             intent.putExtra("name", member)
             startActivity(intent)

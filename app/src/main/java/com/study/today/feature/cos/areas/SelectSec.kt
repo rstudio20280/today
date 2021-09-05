@@ -27,7 +27,7 @@ class SelectSec : AppCompatActivity() {
     }
 
     private fun refreshRecyclerView() {
-        val adapter = MyAdapter(listener = { member ->
+        val adapter = AreaListAdapter(listener = { member ->
             val intent = Intent(this, AreaInfoActivity::class.java)
             intent.putExtra("name", member)
             startActivity(intent)
