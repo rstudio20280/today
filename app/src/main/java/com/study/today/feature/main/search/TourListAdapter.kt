@@ -15,6 +15,9 @@ class TourListAdapter(
 ) : ListAdapter<Tour,
         TourListAdapter.TourViewHolder>
     (object : DiffUtil.ItemCallback<Tour>() {
+    var longClickListener: ((Int, Tour) -> Boolean)? = null,
+    var bookmarkClickListener: ((Int, Tour, Boolean) -> Unit)? = null
+) : ListAdapter<Tour, TourListAdapter.TourViewHolder>(object : DiffUtil.ItemCallback<Tour>() {
     override fun areItemsTheSame(oldItem: Tour, newItem: Tour): Boolean {
         return oldItem.id == newItem.id
     }
@@ -36,6 +39,7 @@ class TourListAdapter(
         binding.root.setOnLongClickListener {
             longClickListener?.invoke(vh.adapterPosition, getItem(vh.adapterPosition)) ?: false
         }
+        binding.bookmarkBtn.setOnClickListener { bookmarkClickListener?.invoke(vh.adapterPosition, getItem(vh.adapterPosition), binding.bookmarkBtn.isChecked) }
         return vh
     }
 

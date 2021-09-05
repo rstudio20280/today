@@ -21,6 +21,10 @@ import com.study.today.feature.cos.areas.SelectSec
 import com.study.today.model.Tour
 import timber.log.Timber
 import java.util.Calendar.getInstance
+import com.study.today.feature.main.bookmark.BookmarkRepo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
 
@@ -37,6 +41,11 @@ class SearchFragment : Fragment() {
             // repo.change(position, tour)
         }
     })
+    private val listAdapter = TourListAdapter() { i, tour, b ->
+        // TODO: 테스트용으로 작성한 부분이기때문에 나중에 수정해야함
+        val repo = BookmarkRepo.getInstance(requireActivity().application)
+        repo.change(tour, b)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -96,5 +105,4 @@ class SearchFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
