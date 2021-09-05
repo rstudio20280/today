@@ -73,8 +73,9 @@ dependencies {
     // 64k
 
     //kakao map
-//    implementation fileTree(include: ['*.jar'], dir: 'libs')
-//    implementation files('libs/libDaumMapAndroid.jar')
+    compile files('libs/libDaumMapAndroid.jar')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/libDaumMapAndroid.jar')
 
     def activity_version = "1.2.3"
     implementation "androidx.activity:activity-ktx:$activity_version"

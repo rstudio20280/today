@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.study.today.databinding.FragmentRecommendBinding
-import com.study.today.feature.cos.AreaList
+import com.study.today.feature.cos.AreaListActivity
 import com.study.today.feature.cos.Drive
 
 class RecommendFragment : Fragment() {
@@ -28,7 +28,7 @@ class RecommendFragment : Fragment() {
 //            activity?.finish()
         }
         binding.travel.setOnClickListener {
-            val intent = Intent(context, AreaList::class.java)
+            val intent = Intent(context, AreaListActivity::class.java)
             startActivity(intent)
 //            activity?.finish()
         }

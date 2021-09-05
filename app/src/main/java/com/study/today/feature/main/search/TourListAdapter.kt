@@ -11,6 +11,10 @@ import com.study.today.model.Tour
 
 class TourListAdapter(
     var clickListener: ((Int, Tour) -> Unit)? = null,
+    var longClickListener: ((Int, Tour) -> Boolean)? = null
+) : ListAdapter<Tour,
+        TourListAdapter.TourViewHolder>
+    (object : DiffUtil.ItemCallback<Tour>() {
     var longClickListener: ((Int, Tour) -> Boolean)? = null,
     var bookmarkClickListener: ((Int, Tour, Boolean) -> Unit)? = null
 ) : ListAdapter<Tour, TourListAdapter.TourViewHolder>(object : DiffUtil.ItemCallback<Tour>() {
@@ -24,7 +28,6 @@ class TourListAdapter(
 
 }) {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TourViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemTourBinding.inflate(layoutInflater, parent, false)
@@ -32,6 +35,7 @@ class TourListAdapter(
         binding.root.setOnClickListener {
             clickListener?.invoke(vh.adapterPosition, getItem(vh.adapterPosition))
         }
+
         binding.root.setOnLongClickListener {
             longClickListener?.invoke(vh.adapterPosition, getItem(vh.adapterPosition)) ?: false
         }
