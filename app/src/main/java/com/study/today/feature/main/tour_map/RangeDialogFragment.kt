@@ -28,6 +28,12 @@ class RangeDialogFragment(val rangeListener: (((Int)) -> Unit)? = null) : Dialog
         _binding = FragmentRangeDialogBinding.inflate(inflater,container,false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+        var searchRange= arguments?.getInt("range_key")
+        var searchRangeNum = searchRange?.div(1000)
+        if (searchRangeNum != null) {
+            binding.rangeSeekbar.setProgress(searchRangeNum)
+            binding.textSeekbar.text="$searchRangeNum"
+        }
         binding.rangeSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.textSeekbar.text = "$progress"

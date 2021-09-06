@@ -215,6 +215,7 @@ class TourMapFragment : Fragment(), MapView.CurrentLocationEventListener {
     //관광지 조회 범위 지정
     private fun ShowRangeDialog() {
         val bundle = Bundle()
+        bundle.putInt("range_key",searchRange)
         val dialog = RangeDialogFragment {range: Int ->
             searchRange = range*1000
             binding.rangeBtn.setText("$range km")
